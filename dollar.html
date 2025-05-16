@@ -1,0 +1,80 @@
+<html lang="ch" style="font-size: 16px;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主义主义魔方（无场域论）</title>
+    <script>
+        document.documentElement.style.fontSize = Math.max(screen.width,screen.height) / 96 + "px";
+    </script>
+    <link rel="stylesheet" href="dollar.css">
+    <script src="dollar.js"></script>
+</head>
+<body>
+    <div id="left_part">
+        <div id="return_button"></div>
+        <div id="search_box">
+            <input id="search_text" type="text" placeholder="键入检索词">
+            <div id="search_button"></div>
+            <div id="reset_button"></div>
+        </div>
+        <div id="back_to_main_button"></div>
+
+        <!-- 立方体部分 -->
+        <div id="ismism_main_cube">
+            <div id="show_cube">
+                <div id="$-1" style="--x:0;--y:3;--a:0.5;--b:0.5"></div>
+                <div id="$-2" style="--x:1;--y:3;--a:0.5;--b:0.5"></div>
+                <div id="$-3" style="--x:2;--y:3;--a:0.5;--b:0.5"></div>
+                <div id="$-4" style="--x:3;--y:3;--a:0.5;--b:1"></div>
+            </div>
+            <div id="hover_cube">
+                <div class="ism" style="--x:0;--y:3" ism_tag="$-1"><p></p></div>
+                <div class="ism" style="--x:1;--y:3" ism_tag="$-2"><p></p></div>
+                <div class="ism" style="--x:2;--y:3" ism_tag="$-3"><p></p></div>
+                <div class="ism" style="--x:3;--y:3" ism_tag="$-4"><p></p></div>
+            </div>
+            <div class="x" style="--x:1"><p>1</p></div>
+            <div class="x" style="--x:2"><p>2</p></div>
+            <div class="x" style="--x:3"><p>3</p></div>
+            <div class="x" style="--x:4"><p>4</p></div>
+            
+            <!-- 不需要 y 线，也就是不需要 横轴 -->
+
+            <ul id="ontological_structure">
+                <li class="ism" ism_tag="$"><p></p></li>
+            </ul>
+            <div id="x"></div>
+            <div id="y"></div>
+            <div id="z"></div>
+        </div>
+
+
+        <div id="axis_label">
+            <p id="axis_x">场域论</p>
+            <p id="axis_y">本体论</p>
+            <p id="axis_z">认识论</p>
+            <p id="axis_i">目的论</p>
+        </div>
+        <div id="ism_info">
+            <div id="increase_fontsize_button"></div>
+            <div id="decrease_fontsize_button"></div>
+            <div><p id="ism_name">数据正在加载中<br><br>若长时间未刷新<br>请检测网络后重试<br>或<br>强制重新加载此页面(windows快捷键 Ctrl + F5)</p></div>
+            <div><p id="ism_axis"></p></div>
+            <div><p id="ism_features"></p></div>
+            <div><p id="ism_related"></p></div>
+        </div>
+        <div id="fontsize_change_box">
+            <div id="increase_fontsize_button"></div>
+            <div id="decrease_fontsize_button"></div>
+        </div>
+        <div id="size_adjuster">
+            <div id="background_line"></div>
+            <div id="size_indicator"><p>△ ≡ ▽</p></div>
+        </div>
+
+    </div>
+    <div id="right_part">
+        
+    </div>
+</body>
+</html>

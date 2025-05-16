@@ -1,4 +1,4 @@
-let ism_detial_list = document.getElementsByClassName("ism")
+let ism_detail_list = document.getElementsByClassName("ism")
 let ism_data = null
 let axis_color = ["red","green","blue","darkorange"]
 let ism_info_font_size = 1.0;
@@ -9,8 +9,8 @@ xhr.send(null)
 xhr.onload = ()=>{
     if(xhr.status === 200){
         ism_data=JSON.parse(xhr.responseText)
-        for(let i=0;i<ism_detial_list.length;i++){
-	        let ism_node = ism_detial_list[i]
+        for(let i=0;i<ism_detail_list.length;i++){
+	        let ism_node = ism_detail_list[i]
             let ism_name = ism_data[ism_node.getAttribute("ism_tag")]["ch_name"].split('/')[0].replace('“','"').replace('”','"')
             ism_node.firstChild.textContent = ism_name
             if(ism_name.length<=4)
@@ -33,6 +33,9 @@ xhr.onload = ()=>{
         document.getElementById("increase_fontsize_button").addEventListener("click",function(){ism_info_font_size+=0.1,document.getElementById("ism_info").style["font-size"]=ism_info_font_size+"rem";if(window.location.hash.slice(1)!=""){window.onhashchange()}})
         document.getElementById("decrease_fontsize_button").addEventListener("click",function(){ism_info_font_size-=0.1,document.getElementById("ism_info").style["font-size"]=ism_info_font_size+"rem";if(window.location.hash.slice(1)!=""){window.onhashchange()}})
         document.getElementById("size_indicator").addEventListener("mousedown",function(){setIndicatorActive()})
+
+        document.getElementById("dollar_button").textContent = "无场域论"
+        document.getElementById("dollar_button").addEventListener("click",function(){window.open("./dollar.html","_blank")})
     }
     else{
         console.log("ism.json load failed")
@@ -43,9 +46,9 @@ xhr.onload = ()=>{
 function selectISM(ism_tag){    
     setISMInfo(ism_tag)
     let ism_length = ism_tag.length
-    let ism_data_list_length = ism_detial_list.length
+    let ism_data_list_length = ism_detail_list.length
     for(let i=0;i<ism_data_list_length;i++){
-        let ism_node = ism_detial_list[i]
+        let ism_node = ism_detail_list[i]
         if(ism_node.getAttribute("ism_tag").slice(0,ism_length) == ism_tag){
             ism_node.classList.add("selected")
             if(ism_node.getAttribute("ism_tag").length==3)
@@ -56,9 +59,9 @@ function selectISM(ism_tag){
 
 function unselectISM(ism_tag){
     let ism_length = ism_tag.length
-    let ism_data_list_length = ism_detial_list.length
+    let ism_data_list_length = ism_detail_list.length
     for(let i=0;i<ism_data_list_length;i++){
-        let ism_node = ism_detial_list[i]
+        let ism_node = ism_detail_list[i]
         if(ism_node.getAttribute("ism_tag").slice(0,ism_length) == ism_tag){
             ism_node.classList.remove("selected")
             if(ism_node.getAttribute("ism_tag").length==3)
@@ -69,8 +72,8 @@ function unselectISM(ism_tag){
 }
 
 window.onhashchange = function(){
-    for(let i=0;i<ism_detial_list.length;i++){
-        let ism_node = ism_detial_list[i]
+    for(let i=0;i<ism_detail_list.length;i++){
+        let ism_node = ism_detail_list[i]
         ism_node.classList.remove("pinned")
         if(ism_node.getAttribute("ism_tag").length==3){
             document.getElementById(ism_node.getAttribute("ism_tag")).classList.remove("pinned")
@@ -86,9 +89,9 @@ window.onhashchange = function(){
             document.title = "主义主义魔方-"+ism_data[ism_tag].ch_name
             setISMInfo(ism_tag)
             let ism_length=ism_tag.length
-            let ism_data_list_length = ism_detial_list.length
+            let ism_data_list_length = ism_detail_list.length
             for(let i=0;i<ism_data_list_length;i++){
-                let ism_node = ism_detial_list[i]
+                let ism_node = ism_detail_list[i]
                 if(ism_node.getAttribute("ism_tag").slice(0,ism_length) == ism_tag){
                     ism_node.classList.add("pinned")
                     if(ism_node.getAttribute("ism_tag").length==3){
@@ -158,8 +161,8 @@ function renewInfo(target){
 function searchISM(target){
     history.replaceState(null,null,"/#")
     document.title = "主义主义魔方"
-    for(let i=0;i<ism_detial_list.length;i++){
-        let ism_node = ism_detial_list[i]
+    for(let i=0;i<ism_detail_list.length;i++){
+        let ism_node = ism_detail_list[i]
         ism_node.classList.remove("pinned")
         ism_node.classList.remove("searched")
         if(ism_node.getAttribute("ism_tag").length==3){
@@ -170,9 +173,9 @@ function searchISM(target){
     if(target != ""){
         let result_count = 0
         let reg = new RegExp(target,'i')//忽略大小写
-        let ism_data_list_length = ism_detial_list.length
+        let ism_data_list_length = ism_detail_list.length
         for(let i=0;i<ism_data_list_length;i++){
-            let ism_node = ism_detial_list[i]
+            let ism_node = ism_detail_list[i]
             let ism_tag = ism_node.getAttribute("ism_tag")
             let ism_tag_data = ism_data[ism_tag]
             if(ism_tag_data.ch_name.search(reg)!=-1 || ism_tag_data.en_name.search(reg)!=-1){
@@ -237,8 +240,8 @@ function searchISM(target){
 
 function resetISM(){
     window.location.hash = ""
-    for(let i=0;i<ism_detial_list.length;i++){
-        let ism_node = ism_detial_list[i]
+    for(let i=0;i<ism_detail_list.length;i++){
+        let ism_node = ism_detail_list[i]
         ism_node.classList.remove("pinned")
         ism_node.classList.remove("searched")
         if(ism_node.getAttribute("ism_tag").length==3){

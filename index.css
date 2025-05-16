@@ -689,3 +689,17 @@ a{
     border-width: 0.3rem 1rem 0.3rem 1rem;
     border-color: transparent blue transparent transparent;
 }
+
+
+#left_part #dollar_button {
+    position:absolute;
+    left:1rem;
+    top:9rem;
+    width:7rem;
+    height:1.5rem;
+    font-size:0.8rem;
+    line-height:1.5rem;
+    background-color: rgb(200, 200, 200);
+    border: solid, black, 0.0543m;
+    text-align: center;
+}
